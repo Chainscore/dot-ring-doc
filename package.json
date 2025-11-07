@@ -1,0 +1,23 @@
+{
+  "name": "dot-ring-docs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Documentation site for Dot Ring using Docusaurus",
+  "scripts": {
+    "server": "docusaurus start",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear",
+    "deploy": "docusaurus deploy"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.4.0",
+    "@docusaurus/preset-classic": "^3.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
