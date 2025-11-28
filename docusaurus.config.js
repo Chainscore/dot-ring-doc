@@ -2,8 +2,8 @@
 
 const math = require('remark-math');
 const katex = require('rehype-katex');
-const siteUrl = process.env.SITE_URL || 'https://chainscore.finance';
-const baseUrl = process.env.BASE_URL || '/dot-ring-doc/';
+const siteUrl = process.env.SITE_URL || 'https://dotring.chainscore.finance';
+const baseUrl = process.env.BASE_URL || '/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
