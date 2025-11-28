@@ -1,22 +1,31 @@
 // @ts-check
 
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Dot Ring Docs',
-  tagline: 'Documentation for the Dot Ring project',
-  url: 'https://example.com', // TODO: update to your production URL
-  baseUrl: '/',
+  title: 'DotRing',
+  tagline: 'Verifiable Random Functions for Python - IETF, Pedersen & Ring VRF',
+  url: 'https://chainscore.finance',
+  baseUrl: '/dot-ring-doc/',
   trailingSlash: false,
-  favicon: 'img/logo.svg',
-  organizationName: 'dot-ring', // TODO: set to your org or GitHub user
-  projectName: 'dot-ring-docs', // TODO: set to your repo name
+  favicon: 'img/favicon.svg',
+  organizationName: 'Chainscore',
+  projectName: 'dot-ring-doc',
 
   onBrokenLinks: 'throw',
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
+    mermaid: true,
   },
+  themes: ['@docusaurus/theme-mermaid'],
+
+  scripts: [
+    '/dot-ring-doc/js/font-switcher.js'
+  ],
 
   i18n: {
     defaultLocale: 'en',
@@ -30,7 +39,9 @@ const config = {
         docs: {
           routeBasePath: '/', // serve docs at site root
           sidebarPath: require.resolve('./sidebars.js'),
-          // Provide an edit URL or omit to disable edit links
+          editUrl: 'https://github.com/Chainscore/dot-ring-doc/edit/main/',
+          remarkPlugins: [math.default],
+          rehypePlugins: [katex.default],
         },
         blog: false, // no blog for now
         theme: {
@@ -43,23 +54,45 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
       navbar: {
-        title: 'Dot Ring',
-        logo: {
-          alt: 'Dot Ring Logo',
-          src: 'img/logo.svg',
-        },
+        title: 'dotring',
         items: [
-          // Add links here as needed
+          {
+            href: 'https://pypi.org/project/dot-ring/',
+            label: 'PyPI',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/Chainscore/dot-ring',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {
-        style: 'dark',
-        links: [],
-        copyright: `Copyright © ${new Date().getFullYear()} Dot Ring.`,
+        style: 'light',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              { label: 'Getting Started', to: '/getting-started/installation' },
+              { label: 'API Reference', to: '/api/ietf-vrf' },
+              { label: 'Guides', to: '/guides/ietf-tutorial' },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              { label: 'GitHub', href: 'https://github.com/Chainscore/dot-ring' },
+              { label: 'PyPI', href: 'https://pypi.org/project/dot-ring/' },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Chainscore. Built with Docusaurus.`,
       },
       prism: {
         theme: require('prism-react-renderer').themes.github,
         darkTheme: require('prism-react-renderer').themes.dracula,
+        additionalLanguages: ['python', 'bash', 'json'],
       },
     }),
 };

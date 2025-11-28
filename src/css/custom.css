@@ -1,12 +1,125 @@
+@import url('katex/dist/katex.min.css');
+
 /* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --ifm-color-primary: #0ea5e9; /* sky-500 */
-  --ifm-color-primary-dark: #0284c7; /* sky-600 */
-  --ifm-color-primary-darker: #0369a1; /* sky-700 */
-  --ifm-color-primary-light: #38bdf8; /* sky-400 */
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-heading-font-family: 'Poppins', 'Space Grotesk', sans-serif;
+  --ifm-color-primary: #e6007a;
+  --ifm-color-primary-dark: #cf006e;
+  --ifm-color-primary-darker: #c40068;
+  --ifm-color-primary-darkest: #a10055;
+  --ifm-color-primary-light: #ff1a8e;
+  --ifm-color-primary-lighter: #ff339b;
+  --ifm-color-primary-lightest: #ff80c3;
   --ifm-code-font-size: 95%;
+  --ifm-heading-font-weight: 800;
+  --ifm-font-size-base: 1rem;
 }
 
 .hero--primary {
-  background: linear-gradient(90deg, #0ea5e9 0%, #22c55e 100%);
+  background: linear-gradient(90deg, #e6007a 0%, #ff339b 100%);
+}
+
+/* Navbar title and logo styling */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar__title {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+  color: var(--ifm-color-primary-darker); /* Keep original color */
+  display: inline-block; /* Added for gradient effect */
+  background: linear-gradient(90deg, #e6007a 0%, #e6007a 40%, #121212 40%, #121212 100%); /* Gradient background */
+  -webkit-background-clip: text; /* Clip background to text */
+  background-clip: text; /* Clip background to text (standard) */
+  -webkit-text-fill-color: transparent; /* Make text fill transparent */
+  margin-left: 0.25rem;
+  text-transform: lowercase;
+}
+
+/* Headings and hero large titles */
+h1, h2, h3, h4, .hero__title, .hero__subtitle {
+  font-family: var(--ifm-heading-font-family);
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  font-weight: var(--ifm-heading-font-weight);
+}
+h2 { font-weight: 700; }
+h3 { font-weight: 600; }
+
+/* Hero title special effect */
+.hero__title {
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #e6007a, #ff339b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(230,0,122,0.06);
+}
+
+/* Split brand color specifics */
+.brand__dot { color: var(--ifm-color-primary); font-weight: 800; }
+.brand__ring { color: #121212; font-weight: 700; margin-left: 0.12rem; }
+
+/* Dark mode brand color tweaks */
+.theme-dark .brand__dot { color: #ff80c3; }
+.theme-dark .brand__ring { color: #ffffff; }
+
+/* Smooth transitions */
+.brand__dot, .brand__ring {
+  transition: color 200ms ease, opacity 200ms ease;
+}
+
+/* Link, button and accent colors */
+a, .navbar__link, .button, .ifm-navbar__item--active > a {
+  color: var(--ifm-color-primary);
+}
+
+/* Content typography improvements */
+body, p, li, .mdx-content {
+  font-family: var(--ifm-font-family-base);
+  line-height: 1.6;
+}
+
+/* Font family variants for mockup preview */
+.font-poppins h1, .font-poppins h2, .font-poppins h3, .font-poppins h4, .font-poppins .hero__title { font-family: 'Poppins', var(--ifm-heading-font-family); }
+.font-sora h1, .font-sora h2, .font-sora h3, .font-sora h4, .font-sora .hero__title { font-family: 'Sora', var(--ifm-heading-font-family); }
+.font-space h1, .font-space h2, .font-space h3, .font-space h4, .font-space .hero__title { font-family: 'Space Grotesk', var(--ifm-heading-font-family); }
+
+/* Font switcher UI styling */
+#dotring-font-switcher .font-switch-btn {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 4px 8px;
+}
+#dotring-font-switcher .font-switch-btn:hover{ background: rgba(230,0,122,0.04); }
+
+/* Card / Callouts */
+.card, .ifm-docs-callout {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* Tweak button styles */
+.button, .button--primary {
+  background: linear-gradient(90deg, #e6007a, #ff339b);
+  border: none;
+  color: #ffffff;
+}
+
+/* Make sure logo is crisp on retina */
+img[src$="logo.svg"] {
+  image-rendering: -webkit-optimize-contrast;
 }
