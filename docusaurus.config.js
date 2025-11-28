@@ -2,13 +2,15 @@
 
 const math = require('remark-math');
 const katex = require('rehype-katex');
+const siteUrl = process.env.SITE_URL || 'https://chainscore.finance';
+const baseUrl = process.env.BASE_URL || '/dot-ring-doc/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'DotRing',
   tagline: 'Verifiable Random Functions for Python - IETF, Pedersen & Ring VRF',
-  url: 'https://chainscore.finance',
-  baseUrl: '/dot-ring-doc/',
+  url: siteUrl,
+  baseUrl: baseUrl,
   trailingSlash: false,
   favicon: 'img/favicon.svg',
   organizationName: 'Chainscore',
