@@ -32,24 +32,6 @@ Ring VRF combines:
 
 This enables **anonymous verifiable randomness** within a group.
 
-## The Challenge: Efficient Ring Proofs
-
-Traditional ring signatures scale linearly with ring size:
-
-| Ring Size | Proof Size | Verify Time |
-|-----------|------------|-------------|
-| 10 | ~3 KB | ~10 ms |
-| 100 | ~30 KB | ~100 ms |
-| 1000 | ~300 KB | ~1 sec |
-
-DotRing uses **KZG polynomial commitments** for constant-size proofs:
-
-| Ring Size | Proof Size | Verify Time |
-|-----------|------------|-------------|
-| 10 | ~784 bytes | ~100 ms |
-| 100 | ~784 bytes | ~100 ms |
-| 1000 | ~784 bytes | ~100 ms |
-
 ## KZG Commitments
 
 ### What is KZG?
@@ -243,15 +225,6 @@ SRS = (G, τG, τ²G, ..., τⁿG, H, τH)
 
 DotRing uses the **Zcash Powers of Tau** ceremony, which had thousands of participants. The setup is secure if **at least one participant was honest**.
 
-## Performance
-
-| Operation | Time | Scales With |
-|-----------|------|-------------|
-| Ring Root Build | ~1-5s | Ring size |
-| Proof Generation | ~2-5s | Ring size |
-| Proof Verification | ~100ms | Constant |
-
-The key advantage: **verification is constant time** regardless of ring size!
 
 ## Further Reading
 

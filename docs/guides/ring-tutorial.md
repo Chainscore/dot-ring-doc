@@ -251,21 +251,6 @@ ring_root_bytes = ring_root.to_bytes()
 restored_root = RingRoot.from_bytes(ring_root_bytes)
 ```
 
-## Performance
-
-Ring VRF is computationally intensive due to KZG commitments:
-
-| Operation | Time (8 members) | Time (32 members) |
-|-----------|------------------|-------------------|
-| Ring Root Construction | ~1s | ~3s |
-| Proof Generation | ~2s | ~5s |
-| Proof Verification | ~0.1s | ~0.1s |
-
-**Tips:**
-- Cache the ring root when the ring doesn't change
-- Proof verification is fast regardless of ring size
-- Proof size is constant (~784 bytes) regardless of ring size
-
 ## Ring Membership Requirements
 
 ⚠️ **Your public key MUST be in the ring:**
